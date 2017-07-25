@@ -1,8 +1,16 @@
-export function selectBook(book){
-  //selectBook is an ActionCreator, it needs to return an action,
-  // an object with a type property.
+import axios from 'axios';
+
+
+export const FETCH_POSTS = 'fetch_posts';
+const ROOT_URL = 'http://reduxblog.herokuapp.com/api/';
+const API_KEY = '?key=todd787'
+
+export function fetchPosts() {
+  
+  const request = axios.get(`${ROOT_URL}/posts${API_KEY}`);
+  
   return {
-    type:'BOOK_SELECTED',
-    payload: book
+    type: FETCH_POSTS,
+    payload: request
   }
 }
